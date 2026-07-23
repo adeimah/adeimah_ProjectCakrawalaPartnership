@@ -3,18 +3,8 @@ session_start();
 
 $error_message = '';
 
-// Koneksi ke database
-$host = 'localhost';
-$dbname = 'db_partnership';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    $error_message = "Koneksi database gagal: " . $e->getMessage();
-}
+// Koneksi ke database (pakai config.php yang sama, jangan duplikat kredensial)
+require 'config.php';
 
 // Proses login
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
